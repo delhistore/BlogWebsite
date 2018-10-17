@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Blog">
+
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+	<meta charset="UTF-8">
+	<title>Blog</title>
+</head>
+
+<body>
+
+	<div class="container" ng-controller="BlogController">		
+
+		<div class="row col-sm-12 pull-left">
+			<h1> Create a BLOG ! </h1>
+
+			<input ng-model="post.title" class="form-control padding" placeholder="Blog Title" />
+			<textarea ng-model="post.body" class="form-control" placeholder="Content here"></textarea>
+			<input ng-model="post.tags" class="form-control" placeholder="Comma separated tags" />
+			<button ng-click="createPost(post)" class="btn btn-primary btn-block">Post</button>
+			<button ng-click="updatePost(post)" class="btn btn-success btn-block">Update</button>
+		</div>
+
+		<div class="row col-sm-12 border" ng-repeat="post in posts">
+			<h2>
+				{{post.title}}
+				<a ng-click="deletePost(post._id)" class="pull-right delete-btn">
+					<span class="glyphicon glyphicon-trash"></span>
+				</a>
+				<a ng-click="editPost(post._id)" class="pull-right edit-btn">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</a>
+			</h2>
+			<em>Posted on : {{post.posted}}</em>
+			<p>{{post.body}}</p>
+			
+			<p>Tags:
+				<ul class="nav nav-pills">
+	    			<li class="active" ng-repeat="tag in post.tags"><a href="#">{{tag}}</a></li>
+	    		</ul>
+    		</p>
+
+			<div class="row">
+				<div class="col-sm-11">
+					<input ng-model="post.comment" class="form-control " placeholder="Add a comment" />
+				</div>
+				<div class="col-sm-1">
+					<button ng-click="postComment(post)" class="btn btn-success">Comment</button>
+				</div>
+			</div>
+			
+			<div ng-repeat="comment in post.comments" class="left">
+				<p>{{comment.body}}</p>
+			</div>
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>
+
+
+
