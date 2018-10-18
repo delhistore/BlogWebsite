@@ -17,13 +17,16 @@
 
 	<meta property="og:site_name"     content="Blogging Website by Tathagat" />
 	<meta property="og:type"          content="website" />
-	<meta property="og:title"         content="Your Website Title" />
-	<meta property="og:description"   content="Your description" />
+	<meta property="og:title"         content="Blogging Website by Tathagat" />
+	<meta property="og:description"   content="Visit the given link to view some amazing blogs" />
+	<meta property="og:url"   		  content="http://13.250.46.157:3000/" />
 
 
 </head>
 
 <body>
+
+	document.querySelector('meta[name="description"]').setAttribute("content", _desc);
 
 	<!-- Load Facebook SDK for JavaScript -->
   	<div id="fb-root"></div>
