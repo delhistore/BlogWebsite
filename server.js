@@ -91,7 +91,6 @@ app.get("/blogpost/:id", (req,res) => {
 app.put("/blogpost/:id", (req,res) => {
 	const postId = req.params.id;
 	const post = req.body;
-	post.tags = post.tags.split(",");
 
 	PostModel.update({_id: postId}, {
 				title: post.title,

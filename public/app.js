@@ -3,7 +3,7 @@
 		.module("Blog", [])
 		.controller("BlogController", BlogController);
 
-	function BlogController($scope, $http) {
+	function BlogController($scope, $http, $window) {
 		$scope.createPost = createPost;
 		$scope.deletePost = deletePost;
 		$scope.editPost = editPost;
@@ -33,16 +33,23 @@
 			.success(getPosts);
 		};
 
-		function editPost(postId) {
+		function editPost(postId) {			
+			$scope.editing = true;
+			$window.scrollTo(0, 0);
 			$http.get("/blogpost/" + postId)
 			.success( function(post) {
+				console.log(post);
 				$scope.post = post;		
 			});
 		};
 
 		function updatePost(post) {
+			console.log("now")
+			console.log(post)
+			$scope.editing = false;
 			$http.put("/blogpost/" + post._id, post)
-			.success(getPosts);
+			.success(getPosts);			
+			$scope.post = {};
 		};
 
 		function postComment(post) {
