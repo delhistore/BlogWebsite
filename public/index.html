@@ -15,11 +15,11 @@
 	<meta charset="UTF-8">
 	<title>Blogging Website by Tathagat</title>
 
-	<meta property="og:site_name"     content="Blogging Website by Tathagat" />
-	<meta property="og:type"          content="website" />
-	<meta property="og:title"         content="Blogging Website by Tathagat" />
-	<meta property="og:description"   content="Visit the given link to view some amazing blogs" />
-	<meta property="og:url"   		  content="http://13.250.46.157:3000/" />
+	<meta name="site_name"  		property="og:site_name"     content="Blogging Website by Tathagat" />
+	<meta name="type"       		property="og:type"          content="website" />
+	<meta name="title"  			property="og:title"         content="Blogging Website by Tathagat" />
+	<meta name="description" 		property="og:description"   content="Visit the given link to view some amazing blogs" />
+	<meta name="url"    			property="og:url"   		content="http://13.250.46.157:3000/" />
 
 
 </head>
@@ -87,6 +87,10 @@
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
 				</h2>
+
+				<!-- FB SHARE BUTTON -->
+				<div ng-click="shareButton(post)" class="fb-share-button share-button" data-href="http://13.250.46.157:3000/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F13.250.46.157%3A3000%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
 				<em>Posted on : {{post.posted}}</em>
 				<p>{{post.body}}</p>
 				

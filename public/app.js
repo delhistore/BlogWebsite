@@ -9,6 +9,7 @@
 		$scope.editPost = editPost;
 		$scope.updatePost = updatePost;
 		$scope.postComment = postComment;
+		$scope.shareButton = shareButton;
 
 		init = () => {
 			getPosts();	
@@ -23,11 +24,28 @@
 				});
 		}
 
+		function shareButton(post) {
+			var metas = document.getElementsByTagName('meta'); 
+			console.log(metas);
+		    for (var i=0; i<metas.length; i++) { 
+		      	if (metas[i].getAttribute("property") == "og:description") { 
+					console.log(metas[i].getAttribute("content")) ; 
+					metas[i].setAttribute("content",post.body);
+					console.log(metas[i].getAttribute("content")) ; 
+      			} 
+      			if (metas[i].getAttribute("property") == "og:title") { 
+					console.log(metas[i].getAttribute("content")) ; 
+					metas[i].setAttribute("content",post.title);
+					console.log(metas[i].getAttribute("content")) ; 
+      			} 
+   			} 
+		};
+
 		function createPost(post) {
 			$http.post("/blogpost", post)
 				.success(getPosts);
 			$scope.post = {};
-		}
+		};
 
 		function deletePost(postId) {
 			$http.delete("/blogpost/" + postId)
