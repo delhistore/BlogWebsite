@@ -26,6 +26,7 @@
 		function createPost(post) {
 			$http.post("/blogpost", post)
 				.success(getPosts);
+			$scope.post = {};
 		}
 
 		function deletePost(postId) {
