@@ -36,6 +36,7 @@ app.post('/blogpost', (req,res) => {
 	PostModel.create(post)
 			.then( 
 				function(obj) {	
+					
 					res.sendStatus(200);
 				},
 				function(error) {

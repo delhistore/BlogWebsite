@@ -55,21 +55,23 @@
     		</div>
 
 			<div class="col-sm-9 blogposts">
-				<h1> Create a BLOG ! </h1>
-				<div class="padding">
-					<input ng-model="post.title" class="form-control" placeholder="Blog Title" />
-				</div>
-				<div class="padding">
-					<textarea ng-model="post.body" rows="4" class="form-control" placeholder="Content here"></textarea>
-				</div>
-				<div class="padding">
-					<input ng-if="editing == false" ng-model="post.tags" class="form-control" placeholder="Comma separated tags" />
-				</div>
+				<form name="blogpostForm">
+					<h1> Create a BLOG ! </h1>
+					<div class="padding">
+						<input ng-model="post.title" class="form-control" placeholder="Blog Title" required />
+					</div>
+					<div class="padding">
+						<textarea ng-model="post.body" rows="4" class="form-control" placeholder="Content here" required></textarea>
+					</div>
+					<div class="padding">
+						<input ng-if="editing == false" ng-model="post.tags" class="form-control" placeholder="Comma separated tags" required />
+					</div>
 
-				<div ng-init="editing = false"> 
-					<button ng-if="editing == false" ng-click="createPost(post)" class="btn btn-primary btn-block">Post</button>
-					<button ng-if="editing == true" ng-click="updatePost(post)" class="btn btn-success btn-block">Update</button>
-				</div>
+					<div ng-init="editing = false"> 
+						<button ng-if="editing == false" ng-disabled="blogpostForm.$invalid" ng-click="createPost(post)" class="btn btn-primary btn-block">Post</button>
+						<button ng-if="editing == true" ng-click="updatePost(post)" class="btn btn-success btn-block">Update</button>
+					</div>
+				</form>
 			</div>
 
 			<div class="col-sm-9">
@@ -83,7 +85,7 @@
 					<a ng-click="deletePost(post._id)" class="pull-right delete-btn">
 						<span class="glyphicon glyphicon-trash"></span>
 					</a>
-					<a ng-click="editPost(post._id)" class="pull-right edit-btn">
+					<a ng-click="editPost(post)" class="pull-right edit-btn">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
 				</h2>

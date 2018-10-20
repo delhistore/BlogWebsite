@@ -52,10 +52,10 @@
 			.success(getPosts);
 		};
 
-		function editPost(postId) {			
+		function editPost(post) {			
 			$scope.editing = true;
-			$window.scrollTo(0, 0);
-			$http.get("/blogpost/" + postId)
+			$window.scrollTo(0, 0);	
+			$http.get("/blogpost/" + post._id)
 			.success( function(post) {
 				console.log(post);
 				$scope.post = post;		
